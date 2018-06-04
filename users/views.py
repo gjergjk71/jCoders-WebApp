@@ -3,11 +3,14 @@ from django.contrib.auth.views import login
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from Manage.models import Event
 
 # Create your views here.
 
 def index(request):
-	return render(request,"pages/index.html")
+	latestEvent = Event.objects.all().order_by("-opened")[0]
+	context = {"latestEvent":latestEvent}
+	return render(request,"pages/index.html",context)
 
 
 def custom_login(request,**kwargs):
