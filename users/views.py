@@ -7,17 +7,18 @@ from Manage.models import Event
 
 # Create your views here.
 
-def index(request):
-	latestEvent = Event.objects.all().order_by("-opened")[0]
-	context = {"latestEvent":latestEvent}
-	return render(request,"pages/index.html",context)
-
-
 def custom_login(request,**kwargs):
     if request.user.is_authenticated:
         return redirect("/users/account")
     else:
         return login(request)
+
+@login_required
+def index(request):
+	latestEvent = Event.objects.all().order_by("-opened")[0]
+	context = {"latestEvent":latestEvent}
+	return render(request,"pages/index.html",context)
+
 
 @login_required
 def account(request):
