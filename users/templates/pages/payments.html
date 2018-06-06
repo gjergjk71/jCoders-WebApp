@@ -22,9 +22,9 @@
             <th>Full Name</th>
             <th>Student</th>
             <th>Group</th>
-            <th>Status</th>
             <th>Price</th>
             <th>Due Date</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -34,13 +34,13 @@
             <td>{{ payment.firstName }} {{ payment.lastName }}</td>
             <td>{{ payment.student }}</td>
             <td>{{ payment.group }}</td>
+            <td>${{ payment.group.training.price }}</td>
+            <td>{{ payment.due_date}}</td>
             {% if payment.status == "P" %}
-                <td><span class="label label-info"> Payment complete </span></td>
+                <td><span class="label label-success"> Payment complete </span></td>
             {% else %}
                 <td><span class="label label-info"> Waiting for payment </span></td>
             {% endif %}
-            <td>${{ payment.group.training.price }}</td>
-            <td>{{ payment.due_date}}</td>
           </tr>
         {% endfor %}
         </tbody>
