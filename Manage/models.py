@@ -13,18 +13,28 @@ class Module(models.Model):
 			return ("{} - {}".format(self.name,self.description[50:] + "..."))
 
 
-class Trainer(models.Model):
+#	role = models.CharField(max_length=1, choices=(('1', 'Manager'),('2', 'Assistant Manager'),
+	#												('3', 'Trainer'),('4','Assistant Trainer'),
+	#												('5', 'Events organizer'),('6','Cleaner')))
+class Employee(models.Model):
 	name = models.CharField(max_length=30)
 	lastname = models.CharField(max_length=30)
 	birthday = models.DateField()	
 	email = models.CharField(max_length=30)
 	phoneNumber = models.CharField(max_length=30)
 	wage = models.IntegerField()
+	role = models.CharField(max_length=1, choices=(('1', 'Manager'),('2', 'Assistant Manager'),
+												('3', 'Trainer'),('4','Assistant Trainer'),
+												('5', 'Events organizer'),('6','Cleaner')))
 	def __str__(self):
 		return ("{} {}".format(self.name,self.lastname))
 
 class Training(models.Model):
-	trainer = models.ForeignKey(Trainer,on_delete = models.CASCADE)
+	"""trainers = []
+				for employee in Employee:
+					if employee.role == "Trainer":
+						trainers.append(employee)"""
+	employee = models.ForeignKey(Employee,on_delete = models.CASCADE)
 	module = models.ForeignKey(Module,on_delete = models.CASCADE)
 	opened = models.DateField()
 	closed = models.DateField()
