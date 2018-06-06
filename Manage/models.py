@@ -57,3 +57,15 @@ class Event(models.Model):
 	price = models.IntegerField()
 	def __str__(self):
 		return ("{} - {}".format(self.opened,self.name))
+
+class Payment(models.Model):
+	firstName = models.CharField(max_length=30)
+	lastName = models.CharField(max_length=30)
+	student = models.ForeignKey(Student,on_delete = models.CASCADE)
+	training = models.ForeignKey(Training,on_delete = models.CASCADE)
+	status = models.CharField(max_length=1, blank=True, default='W', choices=(('W', 'Waiting for payment'),('P', 'Payment complete')))
+	due_date = models.DateField(blank=True,default="")
+	complete = models.DateField(blank=True,default="")
+
+	def __str__(self):
+		return("#{} - {} {}".format(self.id,self.firstName,self.lastName))
