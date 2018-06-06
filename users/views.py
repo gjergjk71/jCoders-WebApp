@@ -3,7 +3,7 @@ from django.contrib.auth.views import login
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from Manage.models import Event
+from Manage.models import Event,Payment
 
 # Create your views here.
 
@@ -12,6 +12,14 @@ def custom_login(request,**kwargs):
         return redirect("/users/account")
     else:
         return login(request)
+
+@login_required
+def showPayments(request):
+	payments = Payment.objects.all()
+	context = {"payments":payments}
+	return render(request,"pages/payments.html",context)
+
+
 
 @login_required
 def index(request):
