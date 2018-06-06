@@ -21,7 +21,7 @@
             <th>#</th>
             <th>Full Name</th>
             <th>Student</th>
-            <th>Training</th>
+            <th>Group</th>
             <th>Status</th>
             <th>Price</th>
             <th>Due Date</th>
@@ -31,12 +31,16 @@
         {% for payment in payments %}
           <tr>
             <td>{{ payment.id }}</td>
-            <td>asdsad</td>
-            <td>sad</td>
-            <td>dsad</td>
-            <td><span class="label label-info">Processing</span></td>
-            <td>$899.00</td>
-            <td>11/6/2014</td>
+            <td>{{ payment.firstName }} {{ payment.lastName }}</td>
+            <td>{{ payment.student }}</td>
+            <td>{{ payment.group }}</td>
+            {% if payment.status == "P" %}
+                <td><span class="label label-info"> Payment complete </span></td>
+            {% else %}
+                <td><span class="label label-info"> Waiting for payment </span></td>
+            {% endif %}
+            <td>${{ payment.group.training.price }}</td>
+            <td>{{ payment.due_date}}</td>
           </tr>
         {% endfor %}
         </tbody>
