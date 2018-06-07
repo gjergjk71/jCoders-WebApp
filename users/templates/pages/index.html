@@ -250,7 +250,7 @@
 				  </div>
 				  <ul class="list-group list-group-flush">
 				    <li class="list-group-item">Account manages student : {{ user.student.name}} {{ user.student.lastname }}</li>
-				    <li class="list-group-item">Gjergj Kadriu is in {{ user.student.group }}</li>
+				    <li class="list-group-item">{{ user.student.name }} is in {{ user.student.group }}</li>
 				   	<li class="list-group-item">{{user.student.group }}'s teacher is {{user.student.group.training.employee }}</li>
 				    <li class="list-group-item">{{ user.student.group }} is currently learning {{ user.student.group.training.module.name }}</li>
 				  </ul>

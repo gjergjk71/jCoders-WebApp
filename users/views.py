@@ -15,8 +15,13 @@ def custom_login(request,**kwargs):
 
 @login_required
 def showPayments(request):
+	current_user = request.user
+	current_user_payments = []
 	payments = Payment.objects.all()
-	context = {"payments":payments}
+	for payment in payments:
+		if payment.student == current_user.student:
+			current_user_payments.append(payment)
+	context = {"current_user_payments":current_user_payments}
 	return render(request,"pages/payments.html",context)
 
 

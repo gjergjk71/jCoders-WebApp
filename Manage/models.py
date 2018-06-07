@@ -40,7 +40,7 @@ class Training(models.Model):
 	closed = models.DateField()
 	price = models.IntegerField()
 	def __str__(self):
-		return ("{} - {}".format(self.trainer,self.module))	
+		return ("{} - {}".format(self.employee,self.module))	
 
 class Group(models.Model):
 	name = models.CharField(max_length=30)
@@ -77,7 +77,6 @@ class Payment(models.Model):
 	group = models.ForeignKey(Group,on_delete = models.CASCADE)
 	status = models.CharField(max_length=1, blank=True, default='W', choices=(('W', 'Waiting for payment'),('P', 'Payment complete')))
 	due_date = models.DateField(blank=True,default="")
-	complete = models.DateField(blank=True,default="")
 
 	def __str__(self):
 		return("#{} - {} {}".format(self.id,self.firstName,self.lastName))
