@@ -203,16 +203,23 @@
 			display: block;
             padding: 0px;
 		}
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
 </style>
 
     <div class="container1">
 		<div class="row">
-			<div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+			<div class="col">
 				<ul class="event-list">
 					<li>
 						<time datetime="{{latestEvent.opened}}">
 							<h4>Latest Event </h4>
 							<h5>{{latestEvent.opened}}</h5>
+							<h6>Price: {{ latestEvent.price }}$</h6>
+
 						</time>
 						<!-- <img alt="Independence Day" src="https://farm4.staticflickr.com/3100/2693171833_3545fb852c_q.jpg" /> -->
 						<div class="info">
@@ -226,14 +233,49 @@
 								<li class="google-plus" style="width:33%;"><a href="#"><span class="fa fa-youtube-play"></span></a></li>
 							</ul>
 						</div>
-						{% if invalid %}
+					</div>
+						</li>
+						</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-							<div class="alert alert-danger">
-  <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-</div>
+	<div class="container">
+		<div class="row equal">
+			<div class="col">
+				<div class="card" style="">
+				  <div style="text-align: center;" class="card-header">
+				    Your info
+				  </div>
+				  <ul class="list-group list-group-flush">
+				    <li class="list-group-item">Account manages student : {{ user.student.name}} {{ user.student.lastname }}</li>
+				    <li class="list-group-item">Gjergj Kadriu is in {{ user.student.group }}</li>
+				   	<li class="list-group-item">{{user.student.group }}'s teacher is {{user.student.group.training.employee }}</li>
+				    <li class="list-group-item">{{ user.student.group }} is currently learning {{ user.student.group.training.module.name }}</li>
+				  </ul>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card text-center">
+				  <div class="card-header">
+				    Payments
+				  </div>
+				  <p>
+				  <div class="card-body">
+				    <h5 class="card-title">Latest payment : ...</h5>
+				    <p>
+				    <p class="card-text">You can look for your payments history online!</p>
+				    <a href="/users/payments" class="btn btn-primary">Payments History</a>
+				    <p> <p> <p> <p>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-						{% endif %}
-					</li>
+
+
 
                         <!-- <div class="info" style="height:auto">
                             <p class="desc">Disney Live is a touring stage show produced by Feld Entertainment under agreement with The Walt Disney Company. Aimed primarily at children, the shows feature performers dressed as Disney cartoon characters in performances that each derive their music and plot from elements collected from various Disney films and properties; the "stars" of the show are credited as the Disney characters themselves, performing their parts in mock cameos, while the performers themselves remain anonymous.
