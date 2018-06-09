@@ -11,42 +11,69 @@
 </style>
 
 {% block content %}
-<h2 style="text-align: center;">Payments History</h2>
-<div class="container">
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Full Name</th>
-            <th>Student</th>
-            <th>Group</th>
-            <th>Price</th>
-            <th>Due Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for payment in current_user_payments %}
-          <tr>
-            <td>{{ payment.id }}</td>
-            <td>{{ payment.firstName }} {{ payment.lastName }}</td>
-            <td>{{ payment.student }}</td>
-            <td>{{ payment.group }}</td>
-            <td>${{ payment.group.training.price }}</td>
-            <td>{{ payment.due_date}}</td>
-            {% if payment.status == "P" %}
-                <td><span class="label label-success"> Payment complete </span></td>
-            {% else %}
-                <td><span class="label label-info"> Waiting for payment </span></td>
-            {% endif %}
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+  {% if hasStudent %}
+      <h2 style="text-align: center;">Payments History</h2>
+      <div class="container">
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Full Name</th>
+                  <th>Student</th>
+                  <th>Group</th>
+                  <th>Price</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for payment in current_user_payments %}
+                <tr>
+                  <td>{{ payment.id }}</td>
+                  <td>{{ payment.firstName }} {{ payment.lastName }}</td>
+                  <td>{{ payment.student }}</td>
+                  <td>{{ payment.group }}</td>
+                  <td>${{ payment.group.training.price }}</td>
+                  <td>{{ payment.due_date}}</td>
+                  {% if payment.status == "P" %}
+                      <td><span class="label label-success"> Payment complete </span></td>
+                  {% else %}
+                      <td><span class="label label-info"> Waiting for payment </span></td>
+                  {% endif %}
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  {% else %}
+          <h2 style="text-align: center;">Payments History</h2>
+      <div class="container">
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Full Name</th>
+                  <th>Student</th>
+                  <th>Group</th>
+                  <th>Price</th>
+                  <th>Due Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+                  <h6 style="text-align: center;">This account is not linked to any student!</h6>
+                  <h6 style="text-align: center;">If this is not what you expected please call +386(0)49454929 or email us at info@j-coders.com</h6>
+          </div>
+        </div>
+      </div>
+  {% endif %}
 
 {% endblock content %}
