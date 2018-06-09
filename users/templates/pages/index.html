@@ -241,6 +241,7 @@
 		</div>
 	</div>
 
+	{% if hasStudent %}
 	<div class="container">
 		<div class="row equal">
 			<div class="col">
@@ -273,6 +274,38 @@
 			</div>
 		</div>
 	</div>
+	{% else %}
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="card text-center">
+					  <div class="card-header">
+					    Register in one of our trainings!
+					  </div>
+					  <div class="card-body">
+					    <h5 class="card-title">Trainings</h5>
+					    <p class="card-text">Select one to redirect to the list of trainings</p>
+					    <a href="http://www.j-coders.com/planprogrami-per-moshat-15-deri-18/" class="btn btn-primary">For 15-18</a>
+					    <a href="http://www.j-coders.com/programi-per-moshat-8-deri-15/" class="btn btn-primary">For 8-15</a>
+					  </div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card text-center">
+					  <div class="card-header">
+					    Payments
+					  </div>
+					  <div class="card-body">
+					    <h5 class="card-title">Latest payment : ...</h5>
+					    <p class="card-text">You can look for your payments history online!</p>
+					    <a href="/users/payments" class="btn btn-primary">Payments History</a>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
 
 
 
