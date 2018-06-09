@@ -7,6 +7,15 @@ from Manage.models import Event,Payment
 
 # Create your views here.
 
+def findStudent(request):
+	try:
+		student = request.user.student
+		hasStudent = True
+	except:
+		hasStudent = False
+	return hasStudent
+
+
 def custom_login(request,**kwargs):
     if request.user.is_authenticated:
         return redirect("/users/account")
@@ -29,7 +38,8 @@ def showPayments(request):
 @login_required
 def index(request):
 	latestEvent = Event.objects.all().order_by("-opened")[0]
-	context = {"latestEvent":latestEvent}
+	hasStudent = findStudent(request)
+	context = {"latestEvent":latestEvent,"hasStudent":hasStudent}
 	return render(request,"pages/index.html",context)
 
 
