@@ -1,0 +1,56 @@
+{% extends "pages/base.html" %}
+
+
+{% block content %}
+    <div class="col-xl-10 offset-md-1">
+        <div class="Order-list">
+            <div class="card">
+                <div class="card-header">
+                     <h4>{{ user|title }} Attendances History : </h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info"> <b>Hello {{ user|title }}, </b>Below is your attendance history!</div>
+                    <hr>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% if hasStudent %}
+                                {% for attendance in current_user_attendances %}
+                                    <tr>
+                                      <td>{{ attendance.student.name }} {{ attendance.student.lastname }}</td>
+                                      <td>{{ attendance.date}}</td>
+                                      {% if attendance.status == "1" %}
+                                          <td><span class="badge badge-pill badge-success"> Attended </span></td>
+                                      {% else %}
+                                          <td><span class="badge badge-pill badge-danger"> Didn't attend </span></td>
+                                      {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if not hasStudent %}
+                        <h6 style="text-align: center;">This account is not linked to any student!</h6>
+                    {% endif %}
+                    {% if not current_user_attendances %}
+                        {% if hasStudent %}
+                            <h6 style="text-align: center;">No attendances to show in attendances history.</h6>
+                        {% endif %}
+                    {% endif %}
+
+                    <div class="alert alert-warning">All above details are related to user email <b>{{ user.email}}</b> , if this is not what you expected please call +386(0)49454929 or email us at info@j-coders.com</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ORDER LIST END-->
+    </div>
+{% endblock content %}
