@@ -3,7 +3,7 @@ from django.contrib.auth.views import login
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from Manage.models import Event,Payment
+from Manage.models import Event,Payment,Attendance
 
 # Create your views here.
 
@@ -37,7 +37,20 @@ def showPayments(request):
 	context = {"current_user_payments":current_user_payments,"hasStudent":hasStudent}
 	return render(request,"pages/payments.html",context)
 
-
+@login_required
+def showAttendances(request):
+	try:
+		current_user = request.user
+		current_user_attendances = []
+		attendances = Attendance.objects.all()
+		for attendance in attendances:
+			if attendance.student == current_user.student:
+				current_user_attendances.append(attendance)
+		hasStudent = True
+	except:
+		hasStudent = False
+	context = {"current_user_attendances":current_user_attendances,"hasStudent":hasStudent}
+	return render(request,"pages/attendance.html",context)
 
 @login_required
 def index(request):
