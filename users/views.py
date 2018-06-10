@@ -55,8 +55,20 @@ def showAttendances(request):
 @login_required
 def index(request):
 	latestEvent = Event.objects.all().order_by("-opened")[0]
+	latestPayment = Payment.objects.all().order_by("-id")[0]
 	hasStudent = findStudent(request)
-	context = {"latestEvent":latestEvent,"hasStudent":hasStudent}
+	if hasStudent:
+		current_user = request.user
+		current_user_payments = []
+		payments = Payment.objects.all()
+		for payment in payments:
+			if payment.student == current_user.student:
+				current_user_payments.append(payment)
+	if hasStudent:
+		context = {"latestEvent":latestEvent,"latestPayment":current_user_payments[-1],"hasStudent":hasStudent}
+	else:
+		context = {"latestEvent":latestEvent,"hasStudent":hasStudent}
+
 	return render(request,"pages/index.html",context)
 
 
