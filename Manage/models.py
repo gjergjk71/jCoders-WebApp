@@ -80,3 +80,14 @@ class Payment(models.Model):
 
 	def __str__(self):
 		return("#{} - {} {}".format(self.id,self.firstName,self.lastName))
+
+class Attendance(models.Model):
+	student = models.ForeignKey(Student,on_delete = models.CASCADE)
+	date = models.DateField(auto_now_add=True)
+	status = models.CharField(max_length=1, choices=(('1', 'Attended'),('2', "Didn't attend")))
+	def __str__(self):
+		if self.status == "1":
+			return ("{} - {} - Attended".format(self.student,self.date))
+		elif self.status == "2":
+			return ("{} - {} - Didn't attend".format(self.student,self.date))
+
