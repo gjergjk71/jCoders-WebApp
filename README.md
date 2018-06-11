@@ -9,4 +9,7 @@
 <h3> Run it on your local machine</h3>
 <h5> <code>python3 manage.py runserver</code> </h5>
 
-<h4>Or.... if you're lazy then <a href="http://gjergjk71.pythonanywhere.com/users">jCoders-WebApp</a>
+<h4>Or.... if you're lazy then <a href="http://gjergjk71.pythonanywhere.com/users">jCoders-WebApp</a></h4>
+
+<h5> Username : <code>admin</code> </h5>
+<h5> Password : <code>adm.12345</code> </h5>
