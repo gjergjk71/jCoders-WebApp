@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.views import login
+from django.contrib.auth import authenticate
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -15,12 +16,21 @@ def findStudent(request):
 		hasStudent = False
 	return hasStudent
 
-
 def custom_login(request,**kwargs):
-    if request.user.is_authenticated:
-        return redirect("/users/account")
-    else:
-        return login(request)
+	if request.user.is_authenticated:
+		return redirect("/users/")
+	elif request.method == "POST":            
+		username=request.POST.get("username")
+		password = request.POST.get("password")                     
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			return login(request)
+		else:
+			return render(request,"registration/login.html",{'invalid': True })
+	elif request.method == "GET":
+		return login(request)
+
+
 
 @login_required
 def showPayments(request):
