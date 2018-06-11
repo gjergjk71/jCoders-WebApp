@@ -65,7 +65,10 @@ def index(request):
 			if payment.student == current_user.student:
 				current_user_payments.append(payment)
 	if hasStudent:
-		context = {"latestEvent":latestEvent,"latestPayment":current_user_payments[-1],"hasStudent":hasStudent}
+		if current_user_payments:
+			context = {"latestEvent":latestEvent,"latestPayment":current_user_payments[-1],"hasStudent":hasStudent}
+		else:
+			context = {"latestEvent":latestEvent,"hasStudent":hasStudent}
 	else:
 		context = {"latestEvent":latestEvent,"hasStudent":hasStudent}
 
