@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.contrib.auth.views import login
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, update_session_auth_hash
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from Manage.models import Event,Payment,Attendance
+from django.contrib import messages
 
 # Create your views here.
 
@@ -98,7 +100,7 @@ def editAccount(request,id):
 		_last_name = request.POST.get('last_name')
 		_email = request.POST.get('email')
 		_username = request.POST.get('username')
-		_password = request.POST.get('password')
+		#Removed a line here -------
 
 		user = User.objects.get(pk=id)
 
@@ -109,3 +111,21 @@ def editAccount(request,id):
 
 		user.save()
 		return redirect("/users/account")
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return render(request,"registration/change_password.html",{'form': form,"successful":True})
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'registration/change_password.html', {
+        'form': form
+    })
