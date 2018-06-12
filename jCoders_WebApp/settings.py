@@ -31,6 +31,10 @@ LOGIN_URL = "/users/login"
 LOGIN_REDIRECT_URL = "/users/"
 # Application definition
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
 INSTALLED_APPS = [
     'Manage',
     'users',
