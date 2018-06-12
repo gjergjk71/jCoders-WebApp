@@ -34,6 +34,7 @@ LOGIN_REDIRECT_URL = "/users/"
 INSTALLED_APPS = [
     'Manage',
     'users',
+    'bootstrapform',
     'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
