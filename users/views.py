@@ -70,13 +70,6 @@ def index(request):
 	latestPayment = Payment.objects.all().order_by("-id")[0]
 	hasStudent = findStudent(request)
 	if hasStudent:
-		current_user = request.user
-		current_user_payments = []
-		payments = Payment.objects.all()
-		for payment in payments:
-			if payment.student == current_user.student:
-				current_user_payments.append(payment)
-	if hasStudent:
 		if current_user_payments:
 			context = {"latestEvent":latestEvent,"latestPayment":current_user_payments[-1],"hasStudent":hasStudent}
 		else:
