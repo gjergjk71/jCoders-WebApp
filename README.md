@@ -1,4 +1,5 @@
 # jCoders-WebApp
+<a href='https://coveralls.io/github/gjergjk71/jCoders-WebApp?branch=master'><img src='https://coveralls.io/repos/github/gjergjk71/jCoders-WebApp/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 <h1>Quick Setup</h1>
 
