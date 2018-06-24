@@ -27,8 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = "/users/login"
-LOGIN_REDIRECT_URL = "/users/"
+LOGIN_URL = "/login"
+LOGIN_REDIRECT_URL = "/"
 # Application definition
 
 
