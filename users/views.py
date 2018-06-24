@@ -20,7 +20,7 @@ def findStudent(request):
 
 def custom_login(request,**kwargs):
 	if request.user.is_authenticated:
-		return redirect("/users/")
+		return redirect("/")
 	elif request.method == "POST":            
 		username=request.POST.get("username")
 		password = request.POST.get("password")                     
@@ -109,7 +109,7 @@ def editAccount(request,id):
 		user.username = _username
 
 		user.save()
-		return redirect("/users/account")
+		return redirect("/account")
 
 
 @login_required
