@@ -2,7 +2,7 @@
 
 {% block content %}
 <body>
-	<form method="POST" action="/users/account/edit/{{user.id}}">
+	<form method="POST" action="/account/edit/{{user.id}}">
 		{% csrf_token %}
 		<h3 style="text-align: center;">Change Account Informations</h3>
 	  <div class="form-group center_div">
@@ -24,7 +24,7 @@
 	  <p></p>
 	  <div class="col-md-11 text-center">
 	  <button style="width:125px;" type="submit" class="btn btn btn-success">Change</button>
-	   <a href="/users/account"><button style="width:125px;" type="button" class="btn btn btn-warning">Cancel</button></a>
+	   <a href="/account"><button style="width:125px;" type="button" class="btn btn btn-warning">Cancel</button></a>
 	   </div>
 	</form>
 </body>
