@@ -4,7 +4,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	path("login/", views.custom_login,name="login"),
-	path("logout/", auth_views.logout,{'next_page': '/users/login'},name="logout"),
+	path("logout/", auth_views.logout,{'next_page': '/login'},name="logout"),
 	path("password_reset/", auth_views.password_reset,name="password_reset"),
 	path("password_reset_done/", auth_views.password_reset_done,name="password_reset_done"),
 	path('password_reset/<uidb64>-<token>', auth_views.password_reset_confirm, name='password_reset_confirm'),
