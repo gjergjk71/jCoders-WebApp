@@ -66,7 +66,10 @@ def showAttendances(request):
 
 @login_required
 def index(request):
-	latestEvent = Event.objects.all().order_by("-opened")[0]
+	try:
+		latestEvent = Event.objects.all().order_by("-opened")[0]
+	except:
+		latestEvent = False	
 	hasStudent = findStudent(request)
 	if hasStudent:
 		current_user = request.user
