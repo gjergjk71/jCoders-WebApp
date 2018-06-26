@@ -10,38 +10,50 @@
 
     <title>jCoders Academy - Log In</title>
 
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css" integrity="sha256-Z8Bv3UrxpRsWTfTPIjCojw5CdRNYSPw3TyxoU8WZSrM=" crossorigin="anonymous" />
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+    <!-- <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet"> -->
   </head>
 
 
-  <body class="text-center">
+  <body class="">
 
-    <form class="form-signin" method="post" action=".">
-        {% csrf_token %}
-        {% if invalid %}
-            <div class="alert alert-danger" role="alert">
-  Invalid Username or Password!
-</div>
-        {% endif %}
-      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="id_username" class="sr-only">Username</label>
-      <input type="username" id="id_username" name="username" class="form-control" placeholder="Username" required autofocus>
-      <label for="id_password" class="sr-only">Password</label>
-      <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <br>
-        <a href="/users/password_reset"><label>Forgot Password?</label></a>
+    <div class="ui container">
+      <div class="ui segment"> 
+        
+        <form class="form-signin" method="post" action=".">
+          {% csrf_token %}
+          
+          {% if invalid %}
+            <div class="ui negative message">
+              <i class="close icon"></i>
+              <div class="header">
+                Invalid username or password!
+              </div>
+              <p>Please try again!
+            </p></div>
+          {% endif %}
+          <!-- <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+          <h1 class="ui center aligned header">Please sign in</h1>
+          <label for="id_username" class="sr-only">Username</label>
+          <input type="username" id="id_username" name="username" class="form-control" placeholder="Username" required autofocus>
+          <label for="id_password" class="sr-only">Password</label>
+          <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Remember me
+            </label>
+            <br>
+            <a href="/users/password_reset"><label>Forgot Password?</label></a>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        </form>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
-</html>
+    </div>
+    </body>
+    </html>
