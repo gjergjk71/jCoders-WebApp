@@ -10,38 +10,72 @@
 
     <title>jCoders Academy - Log In</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css" integrity="sha256-Z8Bv3UrxpRsWTfTPIjCojw5CdRNYSPw3TyxoU8WZSrM=" crossorigin="anonymous" />
 
-    <!-- Custom styles for this template -->
-    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+    <style>
+
+      body {
+        background: rgb(190, 188, 188);
+      }
+
+      .main {
+        margin-top: 20em;
+      }
+
+    </style>
+
   </head>
 
 
-  <body class="text-center">
+  <body>
 
-    <form class="form-signin" method="post" action=".">
-        {% csrf_token %}
-        {% if invalid %}
-            <div class="alert alert-danger" role="alert">
-  Invalid Username or Password!
-</div>
-        {% endif %}
-      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="id_username" class="sr-only">Username</label>
-      <input type="username" id="id_username" name="username" class="form-control" placeholder="Username" required autofocus>
-      <label for="id_password" class="sr-only">Password</label>
-      <input type="password" id="id_password" name="password" class="form-control" placeholder="Password" required>
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <br>
-        <a href="/users/password_reset"><label>Forgot Password?</label></a>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
-  </body>
-</html>
+    <div class="ui main container">
+        <div class="ui grid center aligned">
+          <div class="ui row">
+            <div class="eight wide column">
+                <div class="ui segment">
+
+                  <form class="ui form" method="post" action=".">
+                    {% csrf_token %}
+                    <!-- test -->
+                    {% if invalid %}
+                    <div class="ui negative message">
+                      <i class="close icon"></i>
+                      <div class="header">
+                        Invalid username or password!
+                      </div>
+                      <p>Please try again!
+                      </p></div>
+                      {% endif %}
+                      <h1 class="ui center aligned header">Welcome to jCoders Academy!</i> </h1>
+                      <div class="field">
+                        <input type="text" id="id_username" name="username" placeholder="Username" required>
+                      </div>
+                      <div class="field">
+                        <input type="password" id="id_password" name="password" placeholder="Password" required>
+                      </div>
+                      <div class="field">
+                        <div class="ui radio checkbox">
+                          <input type="checkbox" tabindex="0" class="hidden" value="remember-me">
+                          <label>Remember me</label>
+                        </div>
+                      </div>  
+                      <div class="field">
+                        <a href="/users/password_reset" class="ui right aligned">Forgot Password?</a>
+                      </div>
+                      <button class="fluid ui teal button" type="submit">Sign in</button>
+                      <p>&copy; 2017-2018</p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+        </body>
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous">
+        </script>
+        </html>
