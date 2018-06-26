@@ -1,4 +1,4 @@
-
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,19 +11,8 @@
     <title>jCoders Academy - Log In</title>
 
     <!-- Semantic UI -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.2/semantic.min.css" integrity="sha256-Z8Bv3UrxpRsWTfTPIjCojw5CdRNYSPw3TyxoU8WZSrM=" crossorigin="anonymous" />
-
-    <style>
-
-      body {
-        background: rgb(190, 188, 188);
-      }
-
-      .main {
-        margin-top: 20em;
-      }
-
-    </style>
+    <link rel="stylesheet" href="{% static 'semantic-ui/semantic.min.css' %}" >
+    <link href="users/login.css" rel="stylesheet">
 
   </head>
 
@@ -34,7 +23,7 @@
         <div class="ui grid center aligned">
           <div class="ui row">
             <div class="eight wide column">
-                <div class="ui segment">
+                <div class="ui segment" style="margin: 20px;">
 
                   <form class="ui form" method="post" action=".">
                     {% csrf_token %}
@@ -62,7 +51,7 @@
                         </div>
                       </div>  
                       <div class="field">
-                        <a href="/users/password_reset" class="ui right aligned">Forgot Password?</a>
+                        <a href="/password_reset" class="ui right aligned">Forgot Password?</a>
                       </div>
                       <button class="fluid ui teal button" type="submit">Sign in</button>
                       <p>&copy; 2017-2018</p>

@@ -1,45 +1,13 @@
+{% load static %}
 <head>
 	<title>jCoders Academy</title>
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'bootstrap//css/bootstrap.min.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'users/base.css' %}">
 </head>
-
-
-<style>
-	.student-input {
-	  width: 350px;
-	}
-	.center_div{
-	    margin: 0 auto;
-	    width:30% /* value of your choice which suits your alignment */
-	}
-
-		.phone-number .col-xs-3::after{
-		content: "-";
-		position:absolute;
-		right: 5px;
-		color: black;
-		border: 0px solid;
-		top: 5px;
-}
-
-	.phone-number .col-xs-4{
-		width:25%;
-	}
-
-	.phone-number .col-xs-3, .phone-number .col-xs-4{
-
-		padding-left:0;
-	}
-  body {
-      background-color: #f5f5f5;
-  }
-
-</style>
 
 <body>
 
